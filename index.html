@@ -1,32 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>ala-cas by AtlasOfLivingAustralia</title>
+    <meta name="description" content="ala-cas : ALA customisations of CAS webapp">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <title>ala-cas</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>ala-cas</h1>
-        <p>ALA customisations of CAS webapp</p>
-        <p class="view"><a href="https://github.com/AtlasOfLivingAustralia/ala-cas">View the Project on GitHub <small>AtlasOfLivingAustralia/ala-cas</small></a></p>
-        <ul>
-          <li><a href="https://github.com/AtlasOfLivingAustralia/ala-cas/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/AtlasOfLivingAustralia/ala-cas/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/AtlasOfLivingAustralia/ala-cas">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/AtlasOfLivingAustralia/ala-cas">View on GitHub</a>
+
+          <h1 id="project_title">ala-cas</h1>
+          <h2 id="project_tagline">ALA customisations of CAS webapp</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/AtlasOfLivingAustralia/ala-cas/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/AtlasOfLivingAustralia/ala-cas/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h3>
 <a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h3>
 
@@ -54,8 +58,6 @@
 
 <p>The Authentication filter determines whether the application user is authenticated or not.  This filter redirects to the CAS server and if the user is not authenticated the CAS login page is rendered.  If the entered credentials (id &amp; password) are valid CAS redirects back to the client application. When the user is authenticated CAS creates a Ticket Granting Cookie (TGC) which is sent to the browser. If the user is already authenticated then the CAS server transparently redirects back to the calling application.<br>
 <img src="http://ala-bie.googlecode.com/svn/trunk/ala-cas-client/docs/CAS-Authentication.png" alt="Alt text"></p>
-
-<p><img src="http://ala-bie.googlecode.com/svn/trunk/ala-cas-client/docs/CAS-Authentication.png" alt=""></p>
 
 <p>The TGC is secure (only transmitted to the CAS server via SSL) and opaque (contains no user information).  The TGC's name is CASTGC and expires either when the user's browser is closed or after 3 months if the "Remember Me" option was selected on the Login page.<br>
 When the CAS server redirects an authenticated user to the calling service (application) a Service Ticket is delivered as a URI parameter.  The ST is an opaque one-time ticket that is valid only for the calling application for a short period.<br>
@@ -140,103 +142,24 @@ Returns true if the specified role is in the user's authority attribute.</p>
 <h3>
 <a id="example-webxml-configuration" class="anchor" href="#example-webxml-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example web.xml configuration</h3>
 
-<div class="highlight highlight-xml"><pre>    <span class="pl-c"><span class="pl-pdc">&lt;!--</span> CAS Authentication related properties <span class="pl-pdc">--&gt;</span></span>
-    &lt;<span class="pl-ent">context-param</span>&gt;
-        <span class="pl-c"><span class="pl-pdc">&lt;!--</span> Parameter used by CAS filters <span class="pl-pdc">--&gt;</span></span>
-        &lt;<span class="pl-ent">param-name</span>&gt;serverName&lt;/<span class="pl-ent">param-name</span>&gt;
-        &lt;<span class="pl-ent">param-value</span>&gt;http://biocache.ala.org.au&lt;/<span class="pl-ent">param-value</span>&gt;
-    &lt;/<span class="pl-ent">context-param</span>&gt;
-
-    &lt;<span class="pl-ent">context-param</span>&gt;
-        &lt;<span class="pl-ent">param-name</span>&gt;casServerName&lt;/<span class="pl-ent">param-name</span>&gt;
-        &lt;<span class="pl-ent">param-value</span>&gt;https://auth.ala.org.au&lt;/<span class="pl-ent">param-value</span>&gt;
-    &lt;/<span class="pl-ent">context-param</span>&gt;
-
-    &lt;<span class="pl-ent">context-param</span>&gt;
-        &lt;<span class="pl-ent">param-name</span>&gt;uriFilterPattern&lt;/<span class="pl-ent">param-name</span>&gt;
-        &lt;<span class="pl-ent">param-value</span>&gt;/, /occurrences/\d+, /occurrences/search, /explore/your-area&lt;/<span class="pl-ent">param-value</span>&gt;
-    &lt;/<span class="pl-ent">context-param</span>&gt;
-
-    <span class="pl-c"><span class="pl-pdc">&lt;!--</span> CAS Authentication Service filters <span class="pl-pdc">--&gt;</span></span>
-    &lt;<span class="pl-ent">filter</span>&gt;
-        &lt;<span class="pl-ent">filter-name</span>&gt;CAS Authentication Filter&lt;/<span class="pl-ent">filter-name</span>&gt;
-        &lt;<span class="pl-ent">filter-class</span>&gt;au.org.ala.cas.client.UriFilter&lt;/<span class="pl-ent">filter-class</span>&gt;
-        &lt;<span class="pl-ent">init-param</span>&gt;
-            &lt;<span class="pl-ent">param-name</span>&gt;filterClass&lt;/<span class="pl-ent">param-name</span>&gt;
-            &lt;<span class="pl-ent">param-value</span>&gt;org.jasig.cas.client.authentication.AuthenticationFilter&lt;/<span class="pl-ent">param-value</span>&gt;
-        &lt;/<span class="pl-ent">init-param</span>&gt;
-        &lt;<span class="pl-ent">init-param</span>&gt;
-            &lt;<span class="pl-ent">param-name</span>&gt;casServerLoginUrl&lt;/<span class="pl-ent">param-name</span>&gt;
-            &lt;<span class="pl-ent">param-value</span>&gt;https://auth.ala.org.au/cas/login&lt;/<span class="pl-ent">param-value</span>&gt;
-        &lt;/<span class="pl-ent">init-param</span>&gt;
-        &lt;<span class="pl-ent">init-param</span>&gt;
-            &lt;<span class="pl-ent">param-name</span>&gt;gateway&lt;/<span class="pl-ent">param-name</span>&gt;
-            &lt;<span class="pl-ent">param-value</span>&gt;true&lt;/<span class="pl-ent">param-value</span>&gt;
-        &lt;/<span class="pl-ent">init-param</span>&gt;
-    &lt;/<span class="pl-ent">filter</span>&gt;
-
-    &lt;<span class="pl-ent">filter</span>&gt;
-        &lt;<span class="pl-ent">filter-name</span>&gt;CAS Validation Filter&lt;/<span class="pl-ent">filter-name</span>&gt;
-        &lt;<span class="pl-ent">filter-class</span>&gt;au.org.ala.cas.client.UriFilter&lt;/<span class="pl-ent">filter-class</span>&gt;
-        &lt;<span class="pl-ent">init-param</span>&gt;
-            &lt;<span class="pl-ent">param-name</span>&gt;filterClass&lt;/<span class="pl-ent">param-name</span>&gt;
-            &lt;<span class="pl-ent">param-value</span>&gt;org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter&lt;/<span class="pl-ent">param-value</span>&gt;
-        &lt;/<span class="pl-ent">init-param</span>&gt;
-        &lt;<span class="pl-ent">init-param</span>&gt;
-            &lt;<span class="pl-ent">param-name</span>&gt;casServerUrlPrefix&lt;/<span class="pl-ent">param-name</span>&gt;
-            &lt;<span class="pl-ent">param-value</span>&gt;https://auth.ala.org.au/cas&lt;/<span class="pl-ent">param-value</span>&gt;
-        &lt;/<span class="pl-ent">init-param</span>&gt;
-    &lt;/<span class="pl-ent">filter</span>&gt;
-
-    &lt;<span class="pl-ent">filter</span>&gt;
-        &lt;<span class="pl-ent">filter-name</span>&gt;CAS HttpServletRequest Wrapper Filter&lt;/<span class="pl-ent">filter-name</span>&gt;
-        &lt;<span class="pl-ent">filter-class</span>&gt;au.org.ala.cas.client.UriFilter&lt;/<span class="pl-ent">filter-class</span>&gt;
-        &lt;<span class="pl-ent">init-param</span>&gt;
-            &lt;<span class="pl-ent">param-name</span>&gt;filterClass&lt;/<span class="pl-ent">param-name</span>&gt;
-            &lt;<span class="pl-ent">param-value</span>&gt;au.org.ala.cas.client.AlaHttpServletRequestWrapperFilter&lt;/<span class="pl-ent">param-value</span>&gt;
-        &lt;/<span class="pl-ent">init-param</span>&gt;
-    &lt;/<span class="pl-ent">filter</span>&gt;
-
-    &lt;<span class="pl-ent">filter-mapping</span>&gt;
-        &lt;<span class="pl-ent">filter-name</span>&gt;CAS Authentication Filter&lt;/<span class="pl-ent">filter-name</span>&gt;
-        &lt;<span class="pl-ent">url-pattern</span>&gt;/*&lt;/<span class="pl-ent">url-pattern</span>&gt;
-    &lt;/<span class="pl-ent">filter-mapping</span>&gt;
-
-    &lt;<span class="pl-ent">filter-mapping</span>&gt;
-        &lt;<span class="pl-ent">filter-name</span>&gt;CAS Validation Filter&lt;/<span class="pl-ent">filter-name</span>&gt;
-        &lt;<span class="pl-ent">url-pattern</span>&gt;/*&lt;/<span class="pl-ent">url-pattern</span>&gt;
-    &lt;/<span class="pl-ent">filter-mapping</span>&gt;
-
-    &lt;<span class="pl-ent">filter-mapping</span>&gt;
-        &lt;<span class="pl-ent">filter-name</span>&gt;CAS HttpServletRequest Wrapper Filter&lt;/<span class="pl-ent">filter-name</span>&gt;
-        &lt;<span class="pl-ent">url-pattern</span>&gt;/*&lt;/<span class="pl-ent">url-pattern</span>&gt;
-    &lt;/<span class="pl-ent">filter-mapping</span>&gt;</pre></div>
+<p>{% gist mbohun/4ef049d9a7942938e062 web.xml %}</p>
 
 <h3>
 <a id="maven-dependencies" class="anchor" href="#maven-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Maven dependencies</h3>
 
-<div class="highlight highlight-xml"><pre>    <span class="pl-c"><span class="pl-pdc">&lt;!--</span>  Central Authorisation Service (CAS) client <span class="pl-pdc">--&gt;</span></span>
-    &lt;<span class="pl-ent">dependency</span>&gt;
-        &lt;<span class="pl-ent">groupId</span>&gt;org.jasig.cas.client&lt;/<span class="pl-ent">groupId</span>&gt;
-        &lt;<span class="pl-ent">artifactId</span>&gt;cas-client-core&lt;/<span class="pl-ent">artifactId</span>&gt;
-        &lt;<span class="pl-ent">version</span>&gt;3.1.11&lt;/<span class="pl-ent">version</span>&gt;
-        &lt;<span class="pl-ent">type</span>&gt;jar&lt;/<span class="pl-ent">type</span>&gt;
-        &lt;<span class="pl-ent">scope</span>&gt;compile&lt;/<span class="pl-ent">scope</span>&gt;
-    &lt;/<span class="pl-ent">dependency</span>&gt;
-    &lt;<span class="pl-ent">dependency</span>&gt;
-        &lt;<span class="pl-ent">groupId</span>&gt;au.org.ala&lt;/<span class="pl-ent">groupId</span>&gt;
-        &lt;<span class="pl-ent">artifactId</span>&gt;ala-cas-client&lt;/<span class="pl-ent">artifactId</span>&gt;
-        &lt;<span class="pl-ent">version</span>&gt;1.0-SNAPSHOT&lt;/<span class="pl-ent">version</span>&gt;
-        &lt;<span class="pl-ent">type</span>&gt;jar&lt;/<span class="pl-ent">type</span>&gt;
-        &lt;<span class="pl-ent">scope</span>&gt;compile&lt;/<span class="pl-ent">scope</span>&gt;
-    &lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+<p>{% gist mbohun/4ef049d9a7942938e062 pom.xml %}</p>
       </section>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/AtlasOfLivingAustralia">AtlasOfLivingAustralia</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">ala-cas maintained by <a href="https://github.com/AtlasOfLivingAustralia">AtlasOfLivingAustralia</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
