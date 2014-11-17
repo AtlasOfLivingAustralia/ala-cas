@@ -57,11 +57,11 @@
 <a id="authentication-filter" class="anchor" href="#authentication-filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authentication Filter</h4>
 
 <p>The Authentication filter determines whether the application user is authenticated or not.  This filter redirects to the CAS server and if the user is not authenticated the CAS login page is rendered.  If the entered credentials (id &amp; password) are valid CAS redirects back to the client application. When the user is authenticated CAS creates a Ticket Granting Cookie (TGC) which is sent to the browser. If the user is already authenticated then the CAS server transparently redirects back to the calling application.<br>
-<img src="http://ala-bie.googlecode.com/svn/trunk/ala-cas-client/docs/CAS-Authentication.png" alt="Alt text"></p>
+<img src="images/00-CAS-Authentication.png" alt="Alt text"></p>
 
 <p>The TGC is secure (only transmitted to the CAS server via SSL) and opaque (contains no user information).  The TGC's name is CASTGC and expires either when the user's browser is closed or after 3 months if the "Remember Me" option was selected on the Login page.<br>
 When the CAS server redirects an authenticated user to the calling service (application) a Service Ticket is delivered as a URI parameter.  The ST is an opaque one-time ticket that is valid only for the calling application for a short period.<br>
-<img src="http://ala-bie.googlecode.com/svn/trunk/ala-cas-client/docs/CAS-Redirection.png" alt="Alt text"></p>
+<img src="images/01-CAS-Redirection.png" alt="Alt text"></p>
 
 <p>The default behaviour of rendering the CAS login page (if not authenticated) can be disabled by declaring the init-parameter <code>gateway=true</code>. Gateway mode enables the application to make authenticating optional with the provision of a login link. The format of the login URL is <code>https://auth.org.au/cas/login?service=&lt;serviceURL&gt;</code> where serviceURL is the URL of the application web page containing the login link that CAS uses to redirect back to the app.</p>
 
@@ -69,7 +69,7 @@ When the CAS server redirects an authenticated user to the calling service (appl
 <a id="ticket-validation-filter" class="anchor" href="#ticket-validation-filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ticket Validation Filter</h4>
 
 <p>The Ticket Validation Filter validates the Service Ticket via an HTTP request to the CAS server and receives properties of the authenticated user in response.<br>
-<img src="http://ala-bie.googlecode.com/svn/trunk/ala-cas-client/docs/CAS-ST-Validation.png" alt="Alt text"></p>
+<img src="images/02-CAS-ST-Validation.png" alt="Alt text"></p>
 
 <p>There are 2 validation filters provided by the CAS Java client:</p>
 
