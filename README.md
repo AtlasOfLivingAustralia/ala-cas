@@ -1,1 +1,1 @@
-### ala-cas   [![Build Status](https://travis-ci.org/AtlasOfLivingAustralia/ala-cas.svg?branch=master)](https://travis-ci.org/AtlasOfLivingAustralia/ala-cas)
+### ala-cas   [![BuildStatus](https://travis-ci.org/AtlasOfLivingAustralia/ala-cas.svg?branch=mbohun-test_travis-ci_branch)](https://travis-ci.org/AtlasOfLivingAustralia/ala-cas/tree/mbohun-test_travis-ci_branch)
