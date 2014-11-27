@@ -18,7 +18,7 @@
         <dependency>
             <groupId>au.org.ala</groupId>
             <artifactId>ala-header-and-tails</artifactId>
-            <version>2.0</version>
+            <version>2.1</version>
         </dependency>
 		<dependency>
 			<groupId>org.jasig.cas</groupId>
@@ -98,9 +98,9 @@
 	<repositories>
         <!-- ALA repository  -->
         <repository>
-            <id>ala-repository</id>
+            <id>ala-repo</id>
             <name>ala-repository</name>
-            <url>http://maven.ala.org.au/repository</url>
+            <url>http://nexus.ala.org.au/content/repositories/releases/</url>
         </repository>
 		<repository>
 			<id>ja-sig</id>
