@@ -66,9 +66,9 @@
             <div class="section">
                 <p><spring:message code="screen.welcome.security" /></p>
                 <h2><spring:message code="screen.welcome.registered" text="Register"/></h2>
-                <p><spring:message code="screen.welcome.notRegistered" arguments="${properties['userdetails.url']}/selfRegister.html"/></p>
+                <p><spring:message code="screen.welcome.notRegistered" arguments="${properties['userdetails.url']}/registration/createAccount"/></p>
                 <h2><spring:message code="screen.welcome.forgottenpassword.hdr" text="Forgotten password ?"/></h2>
-                <p><spring:message code="screen.welcome.forgottenpassword" arguments="${properties['userdetails.url']}/resetMyPassword.html"/></p>
+                <p><spring:message code="screen.welcome.forgottenpassword" arguments="${properties['userdetails.url']}/registration/forgottenPassword"/></p>
             </div><!--close section-->
         </div><!--close column-two-->
 <jsp:directive.include file="includes/bottom.jsp" />
