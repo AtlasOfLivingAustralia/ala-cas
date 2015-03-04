@@ -1,12 +1,12 @@
-<%@ page session="true" %><%@ 
-page pageEncoding="UTF-8" %><%@ 
-page contentType="text/html; charset=UTF-8" %><%@ 
-taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%@ 
-taglib prefix="spring" uri="http://www.springframework.org/tags" %><%@ 
-taglib prefix="form" uri="http://www.springframework.org/tags/form" %><%@ 
+<%@ page session="true" %><%@
+page pageEncoding="UTF-8" %><%@
+page contentType="text/html; charset=UTF-8" %><%@
+taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%@
+taglib prefix="spring" uri="http://www.springframework.org/tags" %><%@
+taglib prefix="form" uri="http://www.springframework.org/tags/form" %><%@
 taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %><%@
 taglib uri="/tld/ala.tld" prefix="ala" %>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -15,36 +15,29 @@ taglib uri="/tld/ala.tld" prefix="ala" %>
 
 <title>Login | Atlas of Living Australia</title>
 
-<link rel="stylesheet" href="https://www.ala.org.au/wp-content/themes/ala2011/style2010.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="https://www.ala.org.au/wp-content/themes/ala2011/style2011.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="https://www.ala.org.au/wp-content/themes/ala2011/css/wp-styles.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="https://www.ala.org.au/wp-content/themes/ala2011/css/buttons.css" type="text/css" media="screen" />
-<link rel="icon" type="image/x-icon" href="https://www.ala.org.au/wp-content/themes/ala2011/images/favicon.ico" />
-<link rel="shortcut icon" type="image/x-icon" href="https://www.ala.org.au/wp-content/themes/ala2011/images/favicon.ico" />
+    <script src="/apikey/static/plugins/jquery-1.8.3/js/jquery/jquery-1.8.3.min.js" type="text/javascript" ></script>
+    <link href="/apikey/static/bundle-bundle_autocomplete_head.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    <link href="https://www2.ala.org.au/commonui-bs2/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    <link href="https://www2.ala.org.au/commonui-bs2/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    <link href="https://www2.ala.org.au/commonui-bs2/css/ala-styles.css" type="text/css" rel="stylesheet" media="screen, projection" />
 
-<link rel="stylesheet" type="text/css" media="screen" href="https://www.ala.org.au/wp-content/themes/ala2011/css/jquery.autocomplete.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="https://www.ala.org.au/wp-content/themes/ala2011/css/search.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="https://www.ala.org.au/wp-content/themes/ala2011/css/skin.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="https://www.ala.org.au/wp-content/themes/ala2011/css/sf.css" />
-
-<link type="text/css" rel="stylesheet" href="<spring:theme code="standard.custom.css.file" />" />
-
-<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="https://www.ala.org.au/wp-content/themes/ala2011/scripts/html5.js"></script>
-<script type="text/javascript" src="https://www.ala.org.au/wp-content/themes/ala2011/scripts/superfish/superfish.js"></script>
-<script type="text/javascript" src="https://www.ala.org.au/wp-content/themes/ala2011/scripts/jquery.autocomplete.js"></script>
+    <link type="text/css" rel="stylesheet" href="<spring:theme code="standard.custom.css.file" />" />
 
 </head>
 <body id="cas" class="">
 <div id="wrapper">
 <c:if test="${empty param.format || param.format != 'minimal'}">
 <ala:bannerMenu  returnUrlPath="http://www.ala.org.au"/>
-    <div id="content">
-        <div class="inner">
-            <div id="breadcrumb">
-                <ul>
-                    <li><a href="http://www.ala.org.au">Home</a></li>
-                    <li class="last">Authentication</li>
-                </ul>
+    <div id="content" class="container">
+        <header id="page-header">
+        <div class="row-fluid">
+            <div id="breadcrumb" class="span12">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="http://www.ala.org.au">Home</a>
+                        <span class=" icon icon-arrow-right"></span>
+                    </li>
+                    <li class="current">Authentication</li>
+                </ol>
             </div>
 </c:if>
