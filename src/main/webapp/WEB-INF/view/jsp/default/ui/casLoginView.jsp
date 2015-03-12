@@ -49,8 +49,8 @@
                             <input id="warn" name="warn" value="true" tabindex="3" accesskey="<spring:message code="screen.welcome.label.warn.accesskey" />" type="checkbox" />
                             <label for="warn"><spring:message code="screen.welcome.label.warn" /></label>
                             --%>
-                            <input type="checkbox" name="rememberMe" id="rememberMe" value="true" />
-                            <label for="rememberMe">Remember Me</label>
+                            <input type="checkbox" name="rememberMe" id="rememberMe" value="true" style="vertical-align: initial; left: 0px;/>
+                            <label for="rememberMe" style="display:inline-block; float:none; width: auto;">Remember Me</label>
                         </div>
                         <div class="row btn-row">
                             <input type="hidden" name="lt" value="${flowExecutionKey}" />
