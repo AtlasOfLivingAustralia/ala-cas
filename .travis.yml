@@ -8,20 +8,7 @@ branches:
 before_install:
 - mkdir -p ~/.m2; wget -q -O ~/.m2/settings.xml https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/travis_maven_settings.xml
 script: mvn clean install deploy
-after_success: mkdir tmp; cd tmp; wget -q -O githubapi-get-all-repos.sh https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/bin/githubapi-get-all-repos.sh;
-  wget -q -O generate-github-travis-build-summary-with-grails.sh https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/bin/generate-github-travis-build-summary-with-grails.sh;
-  wget -q -O repo2war-name.lookup https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/bin/repo2war-name.lookup;
-  chmod +x *.sh; ./githubapi-get-all-repos.sh AtlasOfLivingAustralia $GIST_TOKEN | xargs
-  ./generate-github-travis-build-summary-with-grails.sh AtlasOfLivingAustralia > summary.md;
-  msg="$TRAVIS_REPO_SLUG, build $TRAVIS_BUILD_NUMBER";
-  echo "" >> summary.md;
-  echo "\`$msg\`" >> summary.md;
-  git config --global user.name "mbohun"; git config --global user.email "martin.bohun@gmail.com";
-  git config --global push.default matching; git clone https://$GIST_TOKEN:x-oauth-basic@gist.github.com/ee2345d4c8a80ede2628.git
-  build_summary_table_gist.git; cd build_summary_table_gist.git; cp ../summary.md
-  ala_build_summary_with_emoji.md; git commit ala_build_summary_with_emoji.md -m "GENERATED on travis-ci.org by $msg"; git push -q
 env:
   global:
   - secure: L0VnheAQ1MH8Do4krbx49Dt/mbfHaz8mVv8c4LgvkurAoNtnrmk2N68q/BP5cDpyUl9MUt7APtzzl6xCmAAX/yTYL3r8vJhWbY76/pv1UN5OOWVXn5TIhJRFu/7GULj/hHLNzC3AM3Pf1glWZ2CBA9dElsc38J+GGt6iCZSSC6I=
   - secure: ePPqUnaq1DCRh4gDQDSKlaWZU91aH2KixACfZgfesGftfPFeSa7FauBxbvKAkZWp/YkSKeY/gHiPLZQqX0y/nxZ90lrZ1xDxFnzLTKeEIZZ2OGJJDzmTrnhV3ueFllAP0eIlb29cLis5FlV74xaSvparK/R+EhfQ6mjPQRWxbmI=
-  - secure: X/pPm4uxvWv9u3SKxDFuRXdx5ZxwE087rYLBLbeHcSGvYfM3kmuDWchabCPQv9d33BAwhY9qID05+x5cTYYzqYJef7RFxCl3oaHrqovYNvZuKuvJBrbxQuPK1OTBMx0X0vofiPf1oAweE4HbN70ZbHu8ZbEeFlAWOj2OPlBib/Q=

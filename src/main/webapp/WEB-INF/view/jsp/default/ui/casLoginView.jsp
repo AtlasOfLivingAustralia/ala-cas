@@ -4,7 +4,7 @@
             <h1>Login</h1>
         </div><!--close header-->
         </header>
-        <div class="inner" >
+        <div class="row-fluid" >
             <div class="span4">
                 <script type="text/javascript">
                     $(document).ready(function() {
