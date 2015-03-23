@@ -15,12 +15,13 @@ taglib uri="/tld/ala.tld" prefix="ala" %>
 
 <title>Login | Atlas of Living Australia</title>
 
-    <script src="/apikey/static/plugins/jquery-1.8.3/js/jquery/jquery-1.8.3.min.js" type="text/javascript" ></script>
-    <link href="/apikey/static/bundle-bundle_autocomplete_head.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script src="https://www.ala.org.au/commonui-bs2/js/application.js" type="text/javascript" ></script>
+    <script src="https://www.ala.org.au/commonui-bs2/js/bootstrap.js" type="text/javascript" ></script>
     <link href="https://www2.ala.org.au/commonui-bs2/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen, projection" />
     <link href="https://www2.ala.org.au/commonui-bs2/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" media="screen, projection" />
     <link href="https://www2.ala.org.au/commonui-bs2/css/ala-styles.css" type="text/css" rel="stylesheet" media="screen, projection" />
-
+    <link href="css/font-awesome-4.3.0.css" type="text/css" rel="stylesheet" media="all" />
     <link type="text/css" rel="stylesheet" href="<spring:theme code="standard.custom.css.file" />" />
 
 </head>
