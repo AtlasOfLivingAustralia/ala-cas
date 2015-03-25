@@ -11,7 +11,9 @@ import java.util.Map;
 
 import org.jasig.cas.util.DefaultUniqueTicketIdGenerator;
 import org.jasig.cas.util.HttpClient;
-import org.jasig.cas.util.SamlUtils;
+import org.jasig.cas.util.SamlDateUtils;
+import org.jasig.cas.support.saml.util.SamlUtils;
+import org.jasig.cas.support.saml.authentication.principal.SamlService;
 import org.jasig.cas.util.UniqueTicketIdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +30,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractWebApplicationService implements WebApplicationService {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(SamlService.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(SamlService.class); // TODO: check this
 
     private static final Map<String, Object> EMPTY_MAP = Collections.unmodifiableMap(new HashMap<String, Object>());
 
@@ -93,7 +95,7 @@ public abstract class AbstractWebApplicationService implements WebApplicationSer
             + url.substring(questionMarkPosition);
     }
 
-    protected final String getOriginalUrl() {
+    public final String getOriginalUrl() {
         return this.originalUrl;
     }
 
@@ -142,7 +144,7 @@ public abstract class AbstractWebApplicationService implements WebApplicationSer
 
         final String logoutRequest = "<samlp:LogoutRequest xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\" ID=\""
             + GENERATOR.getNewTicketId("LR")
-            + "\" Version=\"2.0\" IssueInstant=\"" + SamlUtils.getCurrentDateAndTime()
+            + "\" Version=\"2.0\" IssueInstant=\"" + SamlDateUtils.getCurrentDateAndTime()
             + "\"><saml:NameID xmlns:saml=\"urn:oasis:names:tc:SAML:2.0:assertion\">@NOT_USED@</saml:NameID><samlp:SessionIndex>"
             + sessionIdentifier + "</samlp:SessionIndex></samlp:LogoutRequest>";
 
