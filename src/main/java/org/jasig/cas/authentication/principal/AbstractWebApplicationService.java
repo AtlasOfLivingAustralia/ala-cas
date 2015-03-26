@@ -12,7 +12,6 @@ import java.util.Map;
 import org.jasig.cas.util.DefaultUniqueTicketIdGenerator;
 import org.jasig.cas.util.HttpClient;
 import org.jasig.cas.util.SamlDateUtils;
-import org.jasig.cas.support.saml.util.SamlUtils;
 import org.jasig.cas.support.saml.authentication.principal.SamlService;
 import org.jasig.cas.util.UniqueTicketIdGenerator;
 import org.slf4j.Logger;
