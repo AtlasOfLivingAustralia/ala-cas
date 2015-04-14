@@ -52,12 +52,18 @@
 		p:user="${ticketRegistry.db.username}"
 		p:password="${ticketRegistry.db.password}" />
 
-
-	<!--Quartz -->
 	<!-- TICKET REGISTRY CLEANER -->
-	<bean id="ticketRegistryCleaner" class="org.jasig.cas.ticket.registry.support.DefaultTicketRegistryCleaner"
-		p:ticketRegistry-ref="ticketRegistry" />
+	<bean id="ticketRegistryCleaner"
+	      class="org.jasig.cas.ticket.registry.support.DefaultTicketRegistryCleaner"
+	      p:ticketRegistry-ref="ticketRegistry"
+	      p:logoutManager-ref="logoutManager" 
+	      p:lock-ref="cleanerLock" />
 	
+	<bean id="cleanerLock"
+	      class="org.jasig.cas.ticket.registry.support.JpaLockingStrategy"
+	      p:uniqueId="${host.name}"
+	      p:applicationId="cas-ticket-registry-cleaner" />
+
 	<bean id="jobDetailTicketRegistryCleaner" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
 		p:targetObject-ref="ticketRegistryCleaner"
 		p:targetMethod="clean" />
