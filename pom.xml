@@ -13,7 +13,7 @@
 	<groupId>au.org.ala</groupId>
 	<artifactId>ala-cas</artifactId>
 	<packaging>war</packaging>
-	<version>1.3.2-SNAPSHOT</version>
+	<version>1.3.2</version>
 
 	<properties>
 		<cas.version>3.4.2</cas.version>
